@@ -702,9 +702,10 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 14.58
-    #define DEFAULT_Ki  1.14
-    #define DEFAULT_Kd 46.57
+    // Updated values from running `M303 E0 C8 S200` with fan at 100% `M106 S255`
+    #define DEFAULT_Kp 25.17
+    #define DEFAULT_Ki 3.03
+    #define DEFAULT_Kd 52.36
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -795,9 +796,11 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 62.75
-  #define DEFAULT_bedKi 9.39
-  #define DEFAULT_bedKd 279.43
+
+  // Updated values from running `M303 E-1 C8 S60`
+  #define DEFAULT_bedKp 32.86
+  #define DEFAULT_bedKi 4.28
+  #define DEFAULT_bedKd 168.25
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1600,7 +1603,10 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 27.25, -12.8, -2 }
+//#define NOZZLE_TO_PROBE_OFFSET { 27.25, -12.8, -2 }
+
+// Ronans updated Z offset (-2.0 + (19 * +0.025))
+#define NOZZLE_TO_PROBE_OFFSET { 27.25, -12.8, -1.525 }
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
